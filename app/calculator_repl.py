@@ -1,3 +1,4 @@
+
 ########################
 # Calculator REPL       #
 ########################
@@ -9,6 +10,52 @@ from app.calculator import Calculator
 from app.exceptions import OperationError, ValidationError
 from app.history import AutoSaveObserver, LoggingObserver
 from app.operations import OperationFactory
+
+
+MENU_COMMANDS = {
+    "1": "add",
+    "2": "subtract",
+    "3": "multiply",
+    "4": "divide",
+    "5": "power",
+    "6": "root",
+    "7": "modulus",
+    "8": "ind_divide",
+    "9": "percent",
+    "10": "abs_diff",
+    "11": "history",
+    "12": "clear",
+    "13": "undo",
+    "14": "redo",
+    "15": "save",
+    "16": "load",
+    "0": "exit",
+}
+
+
+def show_menu():
+    print("\n===== Calculator Menu =====")
+    print("--- Operations ---")
+    print("  1.  Add")
+    print("  2.  Subtract")
+    print("  3.  Multiply")
+    print("  4.  Divide")
+    print("  5.  Power")
+    print("  6.  Root")
+    print("  7.  Modulus")
+    print("  8.  Integer Divide")
+    print("  9.  Percentage")
+    print("  10. Absolute Difference")
+    print("--- History ---")
+    print("  11. Show History")
+    print("  12. Clear History")
+    print("  13. Undo")
+    print("  14. Redo")
+    print("  15. Save History")
+    print("  16. Load History")
+    print("--- Other ---")
+    print("  0.  Exit")
+    print("===========================")
 
 
 def calculator_repl():
@@ -26,24 +73,17 @@ def calculator_repl():
         calc.add_observer(LoggingObserver())
         calc.add_observer(AutoSaveObserver(calc))
 
-        print("Calculator started. Type 'help' for commands.")
+        print("Calculator started.")
 
         while True:
             try:
-                # Prompt the user for a command
-                command = input("\nEnter command: ").lower().strip()
+                # Display the menu and prompt the user for a choice
+                show_menu()
+                choice = input("Select an option: ").strip()
+                command = MENU_COMMANDS.get(choice)
 
-                if command == 'help':
-                    # Display available commands
-                    print("\nAvailable commands:")
-                    print("  add, subtract, multiply, divide, power, root - Perform calculations")
-                    print("  history - Show calculation history")
-                    print("  clear - Clear calculation history")
-                    print("  undo - Undo the last calculation")
-                    print("  redo - Redo the last undone calculation")
-                    print("  save - Save calculation history to file")
-                    print("  load - Load calculation history from file")
-                    print("  exit - Exit the calculator")
+                if command is None:
+                    print(f"Invalid option: '{choice}'. Please select a number from the menu.")
                     continue
 
                 if command == 'exit':
@@ -107,7 +147,8 @@ def calculator_repl():
                         print(f"Error loading history: {e}")
                     continue
 
-                if command in ['add', 'subtract', 'multiply', 'divide', 'power', 'root']:
+                if command in ['add', 'subtract', 'multiply', 'divide', 'power', 'root',
+                               'modulus', 'ind_divide', 'percent', 'abs_diff']:
                     # Perform the specified arithmetic operation
                     try:
                         print("\nEnter numbers (or 'cancel' to abort):")
@@ -139,9 +180,6 @@ def calculator_repl():
                         # Handle any unexpected exceptions
                         print(f"Unexpected error: {e}")
                     continue
-
-                # Handle unknown commands
-                print(f"Unknown command: '{command}'. Type 'help' for available commands.")
 
             except KeyboardInterrupt:
                 # Handle Ctrl+C interruption gracefully
