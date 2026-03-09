@@ -14,8 +14,8 @@ from app.operations import (
     Modulus,
     IntegerDivision,
     Percentage,
-    AbsoluteDifference
-    OperationFactory,
+    AbsoluteDifference,
+    OperationFactory
 )
 
 
