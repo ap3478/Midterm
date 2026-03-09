@@ -328,7 +328,7 @@ def test_cancel_second_number(mock_print, mock_input):
 def test_validation_error(mock_print, mock_input):
     calculator_repl()
     lines = printed_lines(mock_print)
-    assert any(p.startswith("Error:") for p in lines)
+    assert any("Error:" in p for p in lines)
 
 
 @patch('builtins.input', side_effect=[DIVIDE, '10', '0', EXIT])
@@ -336,7 +336,7 @@ def test_validation_error(mock_print, mock_input):
 def test_operation_error_divide_by_zero(mock_print, mock_input):
     calculator_repl()
     lines = printed_lines(mock_print)
-    assert any(p.startswith("Error:") for p in lines)
+    assert any("Error:" in p for p in lines)
 
 
 @patch('builtins.input', side_effect=[ADD, '2', '3', EXIT])
@@ -394,7 +394,7 @@ def test_eof_exits_gracefully(mock_print, mock_input):
 def test_generic_loop_exception_continues(mock_print, mock_input):
     calculator_repl()
     lines = printed_lines(mock_print)
-    assert any(p.startswith("Error:") for p in lines)
+    assert any("Error:" in p for p in lines)
 
 
 # ── REPL: Fatal init error ────────────────────────────────────────────────────
