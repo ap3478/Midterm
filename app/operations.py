@@ -219,7 +219,7 @@ class Root(Operation):
         self.validate_operands(a, b)
         return Decimal(pow(float(a), 1 / float(b)))
 
-<<<<<<< HEAD
+
     
 class Modulus(Operation):
     """
@@ -359,8 +359,7 @@ class AbsoluteDifference(Operation):
         """
         self.validate_operands(a, b)
         return abs(a - b)
-=======
->>>>>>> Tests
+
 
 class OperationFactory:
     """
@@ -378,16 +377,12 @@ class OperationFactory:
         'multiply': Multiplication,
         'divide': Division,
         'power': Power,
-<<<<<<< HEAD
         'root': Root,
         'modulus': Modulus,
         'int_divide': IntegerDivision,
         'percent': Percentage,
         'abs_diff': AbsoluteDifference
-=======
-        'root': Root
->>>>>>> Tests
-    }
+
 
     @classmethod
     def register_operation(cls, name: str, operation_class: type) -> None:
