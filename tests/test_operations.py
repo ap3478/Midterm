@@ -265,7 +265,10 @@ class TestOperationFactory:
             'divide': Division,
             'power': Power,
             'root': Root,
-            
+            'modulus' : Modulus,
+            'int_divide' : IntegerDivision,
+            'percent' : Percentage,
+            'abs_diff' : AbsoluteDifference
         }
 
         for op_name, op_class in operation_map.items():
