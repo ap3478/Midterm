@@ -382,7 +382,7 @@ class OperationFactory:
         'int_divide': IntegerDivision,
         'percent': Percentage,
         'abs_diff': AbsoluteDifference
-
+}
 
     @classmethod
     def register_operation(cls, name: str, operation_class: type) -> None:
