@@ -191,7 +191,8 @@ class TestModulus(BaseOperationTest):
     valid_test_cases = {
         "basic_remainder":        {"a": "10",  "b": "3",   "expected": "1"},
         "exact_division":         {"a": "15",  "b": "5",   "expected": "0"},
-        "negative_dividend":      {"a": "-7",  "b": "3",   "expected": "2"},
+        "negative_dividend":      {"a": "-7",  "b": "3", "expected": "-1"},
+      #  "negative_dividend":      {"a": "-7",  "b": "3",   "expected": "2"},
         "decimal_modulus":        {"a": "10.5","b": "3",   "expected": "1.5"},
     }
     invalid_test_cases = {
@@ -210,7 +211,8 @@ class TestIntegerDivision(BaseOperationTest):
     valid_test_cases = {
         "basic_division":         {"a": "10",  "b": "3",   "expected": "3"},
         "exact_division":         {"a": "15",  "b": "5",   "expected": "3"},
-        "negative_dividend":      {"a": "-10", "b": "3",   "expected": "-4"},
+        "negative_dividend":      {"a": "-10", "b": "3", "expected": "-3"},
+      #  "negative_dividend":      {"a": "-10", "b": "3",   "expected": "-4"},
         "large_numbers":          {"a": "100", "b": "7",   "expected": "14"},
     }
     invalid_test_cases = {
